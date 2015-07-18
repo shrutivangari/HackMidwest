@@ -9,3 +9,4 @@ web-service/db/*.sqlite3-journal
 web-service/log/*
 web-service!/log/.keep
 web-service/tmp
+web-service/.idea
