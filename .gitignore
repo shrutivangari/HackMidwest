@@ -1,0 +1,11 @@
+# Ignore bundler config.
+web-service/.bundle
+
+# Ignore the default SQLite database.
+web-service/db/*.sqlite3
+web-service/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+web-service/log/*
+web-service!/log/.keep
+web-service/tmp
