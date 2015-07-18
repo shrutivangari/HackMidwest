@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718201539) do
+ActiveRecord::Schema.define(version: 20150718222957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,17 @@ ActiveRecord::Schema.define(version: 20150718201539) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "food_nutritions", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "food_nutrients", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "food_id"
+    t.integer  "nutrient_id"
+    t.integer  "value"
+    t.string   "unit"
   end
+
+  add_index "food_nutrients", ["food_id"], name: "index_food_nutrients_on_food_id", using: :btree
+  add_index "food_nutrients", ["nutrient_id"], name: "index_food_nutrients_on_nutrient_id", using: :btree
 
   create_table "foods", force: :cascade do |t|
     t.string   "name"
@@ -43,14 +50,26 @@ ActiveRecord::Schema.define(version: 20150718201539) do
   end
 
   create_table "recommended_ranges", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "disease_id"
+    t.integer  "nutrient_id"
+    t.integer  "value"
+    t.string   "units"
   end
+
+  add_index "recommended_ranges", ["disease_id"], name: "index_recommended_ranges_on_disease_id", using: :btree
+  add_index "recommended_ranges", ["nutrient_id"], name: "index_recommended_ranges_on_nutrient_id", using: :btree
 
   create_table "user_diseases", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "disease_id"
   end
+
+  add_index "user_diseases", ["disease_id"], name: "index_user_diseases_on_disease_id", using: :btree
+  add_index "user_diseases", ["user_id"], name: "index_user_diseases_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "user_name"
@@ -62,4 +81,10 @@ ActiveRecord::Schema.define(version: 20150718201539) do
     t.datetime "updated_at",    null: false
   end
 
+  add_foreign_key "food_nutrients", "foods"
+  add_foreign_key "food_nutrients", "nutrients"
+  add_foreign_key "recommended_ranges", "diseases"
+  add_foreign_key "recommended_ranges", "nutrients"
+  add_foreign_key "user_diseases", "diseases"
+  add_foreign_key "user_diseases", "users"
 end
