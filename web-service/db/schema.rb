@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719053840) do
+ActiveRecord::Schema.define(version: 20150719062129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,19 +26,17 @@ ActiveRecord::Schema.define(version: 20150719053840) do
 
   create_table "chemical_compound_nutrients", force: :cascade do |t|
     t.integer "nutrient_id"
-    t.string  "chemical_compounds"
+    t.integer "chemical_compound_id"
   end
 
+  add_index "chemical_compound_nutrients", ["chemical_compound_id"], name: "index_chemical_compound_nutrients_on_chemical_compound_id", using: :btree
   add_index "chemical_compound_nutrients", ["nutrient_id"], name: "index_chemical_compound_nutrients_on_nutrient_id", using: :btree
 
   create_table "chemical_compounds", force: :cascade do |t|
     t.string   "name"
-    t.integer  "nutrient_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "chemical_compounds", ["nutrient_id"], name: "index_chemical_compounds_on_nutrient_id", using: :btree
 
   create_table "diseases", force: :cascade do |t|
     t.string   "name"
@@ -117,8 +115,8 @@ ActiveRecord::Schema.define(version: 20150719053840) do
 
   add_foreign_key "chemical_compound_foods", "chemical_compounds"
   add_foreign_key "chemical_compound_foods", "foods"
+  add_foreign_key "chemical_compound_nutrients", "chemical_compounds"
   add_foreign_key "chemical_compound_nutrients", "nutrients"
-  add_foreign_key "chemical_compounds", "nutrients"
   add_foreign_key "food_nutrients", "foods"
   add_foreign_key "food_nutrients", "nutrients"
   add_foreign_key "recommended_chemicals", "chemical_compounds"

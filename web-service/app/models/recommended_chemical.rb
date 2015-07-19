@@ -1,4 +1,4 @@
 class RecommendedChemical < ActiveRecord::Base
-  belongs_to :disease
-  belongs_to :chemical_compound
+  has_many :disease
+  has_many :chemical_compound
 end

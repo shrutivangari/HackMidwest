@@ -1,4 +1,4 @@
 class ChemicalCompoundFood < ActiveRecord::Base
-  belongs_to :food
-  belongs_to :chemical_compound
+  has_many :food
+  has_many :chemical_compound
 end

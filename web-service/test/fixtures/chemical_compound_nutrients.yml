@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nutrient_id: 
+  chemical_compound_id: 
+
+two:
+  nutrient_id: 
+  chemical_compound_id: 

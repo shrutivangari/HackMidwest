@@ -29,11 +29,11 @@ food_seeds = [
   {name:'Oily fish', description:'Seafood'},
   {name:'Apple', description:'Fruit'},
   {name:'Spinach', description:'Vegetable'},
-  {name:'Beef', description:'Vegetable'},
-  {name:'Liver', description:'Vegetable'},
-  {name:'Egg', description:'Vegetable'},
-  {name:'Shrimp', description:'Vegetable'},
-  {name:'Fish', description:'Vegetable'},
+  {name:'Beef', description:'Meat'},
+  {name:'Liver', description:'Meat'},
+  {name:'Egg', description:'Ovo'},
+  {name:'Shrimp', description:'Seafood'},
+  {name:'Fish', description:'Seafood'},
   {name:'Fortified Milk', description:'Vegetable'},
   {name:'Cheddar', description:'Vegetable'},
   {name:'Cheese', description:'Vegetable'},
@@ -41,32 +41,37 @@ food_seeds = [
   {name:'Carrot', description:'Vegetable'},
   {name:'Pumpkin', description:'Vegetable'},
   {name:'Squash', description:'Vegetable'},
-  {name:'Mango', description:'Vegetable'}
+  {name:'Mango', description:'Vegetable'},
+  {name:'Tuna', description:'Seafood'},
+  {name:'Walnuts', description:'nuts'},
+  {name:'Almonds', description:'nuts'},
+  {name:'Avocado', description:'Fruit'}
 ]
 
 nutrient_seeds = [
   {name:'Water', description: 'Proximate'},
   {name:'Energy', description: 'Proximate'},
   {name:'Total lipid(fat)', description: 'Proximate'},
-  {name:'Carbohydrate', description: 'Proximate'},
-  {name:'Fiber', description: 'Proximate'},
-  {name:'Calcium', description: 'Proximate'},
-  {name:'Iron', description: 'Mineral'},
-  {name:'Magnesium', description: 'Mineral'},
-  {name:'Phosphorous', description: 'Mineral'},
-  {name:'Potassium', description: 'Mineral'},
-  {name:'Sodium', description: 'Mineral'},
-  {name:'Zinc', description: 'Mineral'},
-  {name:'Vitamin C', description: 'Vitamin'},
+  {name:'Carbohydrate, by difference', description: 'Proximate'},
+  {name:'Fiber, total diatery', description: 'Proximate'},
+  {name:'Sugars, total', description: 'Proximate'},
+  {name:'Calcium, Ca', description: 'Proximate'},
+  {name:'Iron, Fe', description: 'Mineral'},
+  {name:'Magnesium, Mg', description: 'Mineral'},
+  {name:'Phosphorous, P', description: 'Mineral'},
+  {name:'Potassium, K', description: 'Mineral'},
+  {name:'Sodium, Na', description: 'Mineral'},
+  {name:'Zinc, Z', description: 'Mineral'},
+  {name:'Vitamin C, total ascorbic acid', description: 'Vitamin'},
   {name:'Thiamin', description: 'Vitamin'},
   {name:'Riboflavin', description: 'Vitamin'},
   {name:'Niacin', description: 'Vitamin'},
-  {name:'Vitamin B6', description: 'Vitamin'},
+  {name:'Vitamin B-6', description: 'Vitamin'},
   {name:'Folate, DFE', description: 'Vitamin'},
-  {name:'Vitamin B12', description: 'Vitamin'},
+  {name:'Vitamin B-12', description: 'Vitamin'},
   {name:'Vitamin A, RAE', description: 'Vitamin'},
   {name:'Vitamin A, IU', description: 'Vitamin'},
-  {name:'Vitamin E', description: 'Vitamin'},
+  {name:'Vitamin E(alpha-tocopherol', description: 'Vitamin'},
   {name:'Vitamin D(D2 + D3)', description: 'Vitamin'},
   {name:'Vitamin D', description: 'Vitamin'},
   {name:'Vitamin K', description: 'Vitamin'},
@@ -78,63 +83,10 @@ nutrient_seeds = [
   {name:'Caffeine', description: 'lipid'}
 ]
 
-chemical_compound_seeds = [
-  {nutrient_id: Nutrient.where(name: 'Vitamin A, RAE'), name: 'retinol'},
-  {nutrient_id: Nutrient.where(name: 'Vitamin A, RAE'), name: 'beta-carotine'},
-  {nutrient_id: Nutrient.where(name: 'Vitamin D(D2 + D3)'), name: 'beta-calciferol'},
-  {nutrient_id: Nutrient.where(name: 'Vitamin D'), name: 'calciferol'},
-  {nutrient_id: Nutrient.where(name: 'Sodium'), name: 'sodium'}
-]
-
-recommended_chemical_seeds = [
-  {disease_id: Disease.where(name: 'Cancer'), chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine')},
-  {disease_id: Disease.where(name: 'Cardiovascular Disease'), chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine')},
-  {disease_id: Disease.where(name: 'Cataract'), chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine')},
-  {disease_id: Disease.where(name: 'Hypercholesterolemia'), chemical_compound_id: ChemicalCompound.where(name: 'fatty-acids')},
-  {disease_id: Disease.where(name: 'Hypotension'), chemical_compound_id: ChemicalCompound.where(name: 'sodium')}
-]
-
-chemical_compound_food_seeds = [
-  {food_id: Food.where(name:'Beef'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
-  {food_id: Food.where(name:'Liver'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
-  {food_id: Food.where(name: 'Eggs'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
-  {food_id: Food.where(name: 'Shrimp'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
-  {food_id: Food.where(name: 'Fish'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
-  {food_id: Food.where(name: 'Fortified Milk'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
-  {food_id: Food.where(name: 'Cheddar'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
-  {food_id: Food.where(name: 'Cheese'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
-  {food_id: Food.where(name:' Sweet Potato'), chemical_compound_id: ChemicalCompound.where(name:'beta-carotine')},
-  {food_id: Food.where(name:'Carrot'), chemical_compound_id: ChemicalCompound.where(name:'beta-carotine')},
-  {food_id: Food.where(name: 'Pumpkin'), chemical_compound_id: ChemicalCompound.where(name:'beta-carotine')},
-  {food_id: Food.where(name: 'Squash'), chemical_compound_id: ChemicalCompound.where(name:'beta-carotine')},
-  {food_id: Food.where(name: 'Mango'), chemical_compound_id: ChemicalCompound.where(name:'beta-carotine')},
-  {food_id: Food.where(name: 'Tuna'), chemical_compound_id: ChemicalCompound.where(name:'fatty-acids')},
-  {food_id: Food.where(name: 'Walnuts'), chemical_compound_id: ChemicalCompound.where(name:'fatty-acids')},
-  {food_id: Food.where(name: 'Almonds'), chemical_compound_id: ChemicalCompound.where(name:'fatty-acids')},
-  {food_id: Food.where(name: 'Avocado'), chemical_compound_id: ChemicalCompound.where(name:'fatty-acids')},
-  {food_id: Food.where(name: 'Soy Sauce'), chemical_compound_id: ChemicalCompound.where(name:'sodium')}
-]
-
-user_seeds = [
-  {user_name: 'minion_kevin', first_name: 'Kevin', last_name: 'Minion', date_of_birth:'1970-06-01', gender: 'M'},
-  {user_name: 'minion_stuart', first_name: 'Stuart', last_name: 'Minion', date_of_birth:'1980-06-01', gender: 'F'},
-  {user_name: 'minion_bob', first_name: 'Bob', last_name: 'Minion', date_of_birth:'1990-06-01', gender: 'M'}
-]
-
-user_disease_seeds = [
-  {user_id: User.where(user_name: 'minion_kevin'), disease_id: Disease.where(name: 'Hypercholesterolemia')},
-  {user_id: User.where(user_name: 'minion_stuart'), disease_id: Disease.where(name: 'Cardiovascular Disease')}
-]
-
-recommended_range_seeds = [
-    {disease_id: Disease.where(name: 'Hypertension'), nutrient_id: Nutrient.where(name: 'Sodium'), units: 'mg', recommended: '0', min: '1500', max: '1500'},
-    {disease_id: Disease.where(name: 'Diabetes'), nutrient_id: Nutrient.where(name: 'Sugar'), units: 'g', recommended: '0', min: '5', max:'5'},
-    {disease_id: Disease.where(name: 'Hypercholesterolemia'), nutrient_id: Nutrient.where(name: 'Cholesterol'), units: 'mg', recommended: '1', min: '0', max:'1'},
-    {disease_id: Disease.where(name: 'Hypercholesterolemia'), nutrient_id: Nutrient.where(name: 'Sugar'), units: 'mg', recommended: '1', min:'3', max: '8'}
-]
 
 # ActiveRecord::Base.connection.execute('TRUNCATE TABLE diseases, foods, nutrients, users RESTART IDENTITY')
 
+ChemicalCompound.delete_all
 Disease.delete_all
 Nutrient.delete_all
 User.delete_all
@@ -143,7 +95,74 @@ Food.delete_all
 disease_seeds.each { |cs| Disease.create(cs) }
 food_seeds.each { |is| Food.create(is) }
 nutrient_seeds.each { |cs| Nutrient.create(cs) }
+
+chemical_compound_seeds = [
+    {name: 'retinol'},
+    {name: 'beta-carotine'},
+    {name: 'calciferol'},
+    {name: 'fatty-acids'},
+    {name: 'sodium'}
+]
+
 chemical_compound_seeds.each { |cs| ChemicalCompound.create(cs) }
+
+chemical_compound_nutrient_seeds = [
+    {nutrient_id: Nutrient.where(name: 'Vitamin A, RAE').first.id, chemical_compound_id: ChemicalCompound.where(name: 'retinol').first.id},
+    {nutrient_id: Nutrient.where(name: 'Vitamin A, RAE').first.id, chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine').first.id},
+    {nutrient_id: Nutrient.where(name: 'Vitamin D').first.id, chemical_compound_id: ChemicalCompound.where(name: 'calciferol').first.id},
+    {nutrient_id: Nutrient.where(name: 'Sodium, Na').first.id, chemical_compound_id: ChemicalCompound.where(name: 'sodium').first.id}
+]
+
+recommended_chemical_seeds = [
+    {disease_id: Disease.where(name: 'Cancer').first.id, chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine').first.id},
+    {disease_id: Disease.where(name: 'Cardiovascular Disease').first.id, chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine').first.id},
+    {disease_id: Disease.where(name: 'Cataract').first.id, chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine').first.id},
+    {disease_id: Disease.where(name: 'Hypercholesterolemia').first.id, chemical_compound_id: ChemicalCompound.where(name: 'fatty-acids').first.id},
+    {disease_id: Disease.where(name: 'Hypotension').first.id, chemical_compound_id: ChemicalCompound.where(name: 'sodium').first.id}
+]
+
+chemical_compound_food_seeds = [
+    {food_id: Food.where(name:'Beef').first.id, chemical_compound_id: ChemicalCompound.where(name:'retinol').first.id},
+    {food_id: Food.where(name:'Liver').first.id, chemical_compound_id: ChemicalCompound.where(name:'retinol').first.id},
+    {food_id: Food.where(name: 'Egg').first.id, chemical_compound_id: ChemicalCompound.where(name:'retinol').first.id},
+    {food_id: Food.where(name: 'Shrimp').first.id, chemical_compound_id: ChemicalCompound.where(name:'retinol').first.id},
+    {food_id: Food.where(name: 'Fish').first.id, chemical_compound_id: ChemicalCompound.where(name:'retinol').first.id},
+    {food_id: Food.where(name: 'Fortified Milk').first.id, chemical_compound_id: ChemicalCompound.where(name:'retinol').first.id},
+    {food_id: Food.where(name: 'Cheddar').first.id, chemical_compound_id: ChemicalCompound.where(name:'retinol').first.id},
+    {food_id: Food.where(name: 'Cheese').first.id, chemical_compound_id: ChemicalCompound.where(name:'retinol').first.id},
+    {food_id: Food.where(name: 'Sweet Potato').first.id, chemical_compound_id: ChemicalCompound.where(name:'beta-carotine').first.id},
+    {food_id: Food.where(name: 'Carrot').first.id, chemical_compound_id: ChemicalCompound.where(name:'beta-carotine').first.id},
+    {food_id: Food.where(name: 'Pumpkin').first.id, chemical_compound_id: ChemicalCompound.where(name:'beta-carotine').first.id},
+    {food_id: Food.where(name: 'Squash').first.id, chemical_compound_id: ChemicalCompound.where(name:'beta-carotine').first.id},
+    {food_id: Food.where(name: 'Mango').first.id, chemical_compound_id: ChemicalCompound.where(name:'beta-carotine').first.id},
+    {food_id: Food.where(name: 'Tuna').first.id, chemical_compound_id: ChemicalCompound.where(name:'fatty-acids').first.id},
+    {food_id: Food.where(name: 'Walnuts').first.id, chemical_compound_id: ChemicalCompound.where(name:'fatty-acids').first.id},
+    {food_id: Food.where(name: 'Almonds').first.id, chemical_compound_id: ChemicalCompound.where(name:'fatty-acids').first.id},
+    {food_id: Food.where(name: 'Avocado').first.id, chemical_compound_id: ChemicalCompound.where(name:'fatty-acids').first.id},
+    {food_id: Food.where(name: 'Soy Sauce').first.id, chemical_compound_id: ChemicalCompound.where(name:'sodium').first.id}
+]
+
+user_seeds = [
+    {user_name: 'minion_kevin', first_name: 'Kevin', last_name: 'Minion', date_of_birth:'1970-06-01', gender: 'M'},
+    {user_name: 'minion_stuart', first_name: 'Stuart', last_name: 'Minion', date_of_birth:'1980-06-01', gender: 'F'},
+    {user_name: 'minion_bob', first_name: 'Bob', last_name: 'Minion', date_of_birth:'1990-06-01', gender: 'M'}
+]
+
+user_disease_seeds = [
+    {user_id: User.where(user_name: 'minion_kevin'), disease_id: Disease.where(name: 'Hypercholesterolemia')},
+    {user_id: User.where(user_name: 'minion_stuart'), disease_id: Disease.where(name: 'Cardiovascular Disease')}
+]
+
+recommended_range_seeds = [
+    {disease_id: Disease.where(name: 'Hypertension').first.id, nutrient_id: Nutrient.where(name: 'Sodium, Na').first.id, units: 'mg', recommended: '0', min: '1500', max: '1500'},
+    {disease_id: Disease.where(name: 'Diabetes').first.id, nutrient_id: Nutrient.where(name: 'Sugars, total').first.id, units: 'g', recommended: '0', min: '5', max:'5'},
+    {disease_id: Disease.where(name: 'Hypercholesterolemia').first.id, nutrient_id: Nutrient.where(name: 'Cholesterol').first.id, units: 'mg', recommended: '1', min: '0', max:'1'},
+    {disease_id: Disease.where(name: 'Hypercholesterolemia').first.id, nutrient_id: Nutrient.where(name: 'Sugars, total').first.id, units: 'mg', recommended: '1', min:'3', max: '8'}
+]
+
+
+
+chemical_compound_nutrient_seeds.each { |cs| ChemicalCompoundNutrient.create(cs) }
 recommended_chemical_seeds.each { |cs| RecommendedChemical.create(cs) }
 chemical_compound_food_seeds.each { |cs| ChemicalCompoundFood.create(cs) }
 user_seeds.each { |cs| User.create(cs) }
