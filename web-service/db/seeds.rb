@@ -86,6 +86,7 @@ nutrient_seeds = [
   {name:'Caffeine', description: 'lipid'}
 ]
 
+FoodNutrient.delete_all
 ChemicalCompoundNutrient.delete_all
 RecommendedChemical.delete_all
 ChemicalCompoundFood.delete_all
@@ -124,6 +125,7 @@ recommended_chemical_seeds = [
     {disease_id: Disease.where(name: 'Cancer').first.id, chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine').first.id, recommended: '1'},
     {disease_id: Disease.where(name: 'Cardiovascular Disease').first.id, chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine').first.id, recommended: '1'},
     {disease_id: Disease.where(name: 'Cataract').first.id, chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine').first.id, recommended: '1'},
+    {disease_id: Disease.where(name: 'Cataract').first.id, chemical_compound_id: ChemicalCompound.where(name: 'retinol').first.id, recommended: '1'},
     {disease_id: Disease.where(name: 'Hypercholesterolemia').first.id, chemical_compound_id: ChemicalCompound.where(name: 'fatty-acids').first.id, recommended: '1'},
     {disease_id: Disease.where(name: 'Hypotension').first.id, chemical_compound_id: ChemicalCompound.where(name: 'sodium').first.id, recommended: '1'},
     {disease_id: Disease.where(name: 'Kidney Stones').first.id, chemical_compound_id: ChemicalCompound.where(name: 'oxalate').first.id, recommended: '0'}
@@ -165,7 +167,7 @@ user_disease_seeds = [
 
 recommended_range_seeds = [
     {disease_id: Disease.where(name: 'Hypertension').first.id, nutrient_id: Nutrient.where(name: 'Sodium, Na').first.id, units: 'mg', recommended: '0', min: '1500', max: '1500'},
-    {disease_id: Disease.where(name: 'Diabetes').first.id, nutrient_id: Nutrient.where(name: 'Sugars, total').first.id, units: 'g', recommended: '0', min: '5', max:'5'},
+    {disease_id: Disease.where(name: 'Diabetes').first.id, nutrient_id: Nutrient.where(name: 'Sugars, total').first.id, units: 'g', recommended: '0', min: '12', max:'12'},
     {disease_id: Disease.where(name: 'Hypercholesterolemia').first.id, nutrient_id: Nutrient.where(name: 'Cholesterol').first.id, units: 'mg', recommended: '1', min: '0', max:'1'},
     {disease_id: Disease.where(name: 'Hypercholesterolemia').first.id, nutrient_id: Nutrient.where(name: 'Sugars, total').first.id, units: 'mg', recommended: '1', min:'3', max: '8'},
     {disease_id: Disease.where(name: 'Anemia').first.id, nutrient_id: Nutrient.where(name: 'Caffeine').first.id, units: 'mg', recommended: '0', min:'10', max: '20'},

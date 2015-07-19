@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719071406) do
+ActiveRecord::Schema.define(version: 20150719082308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 20150719071406) do
 
   create_table "recommended_chemicals", force: :cascade do |t|
     t.integer "disease_id"
-    t.integer "chemical_compound_id"
     t.boolean "recommended"
+    t.integer "chemical_compound_id"
   end
 
   add_index "recommended_chemicals", ["chemical_compound_id"], name: "index_recommended_chemicals_on_chemical_compound_id", using: :btree

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount Dashing::Engine, at: Dashing.config.engine_path
+  # mount Dashing::Engine, at: Dashing.config.engine_path
 
   get 'suggestions' => 'suggestions#index'
 
