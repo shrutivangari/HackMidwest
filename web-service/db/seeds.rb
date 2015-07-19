@@ -78,41 +78,41 @@ nutrient_seeds = [
   {name:'Caffeine', description: 'lipid'}
 ]
 
-chemical_compound_nutrient_seeds = [
-  {nutrient_id: Nutrient.where(name: 'Vitamin A, RAE'), chemical_compound: 'retinol'},
-  {nutrient_id: Nutrient.where(name: 'Vitamin A, RAE'), chemical_compound: 'beta-carotine'},
-  {nutrient_id: Nutrient.where(name: 'Vitamin D(D2 + D3)'), chemical_compound: 'beta-calciferol'},
-  {nutrient_id: Nutrient.where(name: 'Vitamin D'), chemical_compound: 'calciferol'},
-  {nutrient_id: Nutrient.where(name: 'Sodium'), chemical_compound: 'sodium'}
+chemical_compound_seeds = [
+  {nutrient_id: Nutrient.where(name: 'Vitamin A, RAE'), name: 'retinol'},
+  {nutrient_id: Nutrient.where(name: 'Vitamin A, RAE'), name: 'beta-carotine'},
+  {nutrient_id: Nutrient.where(name: 'Vitamin D(D2 + D3)'), name: 'beta-calciferol'},
+  {nutrient_id: Nutrient.where(name: 'Vitamin D'), name: 'calciferol'},
+  {nutrient_id: Nutrient.where(name: 'Sodium'), name: 'sodium'}
 ]
 
-chemical_compound_disease_seeds = [
-  {disease_id: Disease.where(name: 'Cancer'), chemical_compound: 'beta-carotine'},
-  {disease_id: Disease.where(name: 'Cardiovascular Disease'), chemical_compound: 'beta-carotine'},
-  {disease_id: Disease.where(name: 'Cataract'), chemical_compound: 'beta-carotine'},
-  {disease_id: Disease.where(name: 'Hypercholesterolemia'), chemical_compound: 'fatty-acids'},
-  {disease_id: Disease.where(name: 'Hypotension'), chemical_compound: 'sodium'}
+recommended_chemical_seeds = [
+  {disease_id: Disease.where(name: 'Cancer'), chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine')},
+  {disease_id: Disease.where(name: 'Cardiovascular Disease'), chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine')},
+  {disease_id: Disease.where(name: 'Cataract'), chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine')},
+  {disease_id: Disease.where(name: 'Hypercholesterolemia'), chemical_compound_id: ChemicalCompound.where(name: 'fatty-acids')},
+  {disease_id: Disease.where(name: 'Hypotension'), chemical_compound_id: ChemicalCompound.where(name: 'sodium')}
 ]
 
 chemical_compound_food_seeds = [
-  {food_id: Food.where(name:'Beef'), chemical_compound:'retinol'},
-  {food_id: Food.where(name:'Liver'), chemical_compound:'retinol'},
-  {food_id: Food.where(name: 'Eggs'), chemical_compound:'retinol'},
-  {food_id: Food.where(name: 'Shrimp'), chemical_compound:'retinol'},
-  {food_id: Food.where(name: 'Fish'), chemical_compound:'retinol'},
-  {food_id: Food.where(name: 'Fortified Milk'), chemical_compound:'retinol'},
-  {food_id: Food.where(name: 'Cheddar'), chemical_compound:'retinol'},
-  {food_id: Food.where(name: 'Cheese'), chemical_compound:'retinol'},
-  {food_id: Food.where(name:' Sweet Potato'), chemical_compound:'beta-carotine'},
-  {food_id: Food.where(name:'Carrot'), chemical_compound:'beta-carotine'},
-  {food_id: Food.where(name: 'Pumpkin'), chemical_compound:'beta-carotine'},
-  {food_id: Food.where(name: 'Squash'), chemical_compound:'beta-carotine'},
-  {food_id: Food.where(name: 'Mango'), chemical_compound:'beta-carotine'},
-  {food_id: Food.where(name: 'Tuna'), chemical_compound:'fatty-acids'},
-  {food_id: Food.where(name: 'Walnuts'), chemical_compound:'fatty-acids'},
-  {food_id: Food.where(name: 'Almonds'), chemical_compound:'fatty-acids'},
-  {food_id: Food.where(name: 'Avocado'), chemical_compound:'fatty-acids'},
-  {food_id: Food.where(name: 'Soy Sauce'), chemical_compound:'sodium'}
+  {food_id: Food.where(name:'Beef'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
+  {food_id: Food.where(name:'Liver'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
+  {food_id: Food.where(name: 'Eggs'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
+  {food_id: Food.where(name: 'Shrimp'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
+  {food_id: Food.where(name: 'Fish'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
+  {food_id: Food.where(name: 'Fortified Milk'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
+  {food_id: Food.where(name: 'Cheddar'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
+  {food_id: Food.where(name: 'Cheese'), chemical_compound_id: ChemicalCompound.where(name:'retinol')},
+  {food_id: Food.where(name:' Sweet Potato'), chemical_compound_id: ChemicalCompound.where(name:'beta-carotine')},
+  {food_id: Food.where(name:'Carrot'), chemical_compound_id: ChemicalCompound.where(name:'beta-carotine')},
+  {food_id: Food.where(name: 'Pumpkin'), chemical_compound_id: ChemicalCompound.where(name:'beta-carotine')},
+  {food_id: Food.where(name: 'Squash'), chemical_compound_id: ChemicalCompound.where(name:'beta-carotine')},
+  {food_id: Food.where(name: 'Mango'), chemical_compound_id: ChemicalCompound.where(name:'beta-carotine')},
+  {food_id: Food.where(name: 'Tuna'), chemical_compound_id: ChemicalCompound.where(name:'fatty-acids')},
+  {food_id: Food.where(name: 'Walnuts'), chemical_compound_id: ChemicalCompound.where(name:'fatty-acids')},
+  {food_id: Food.where(name: 'Almonds'), chemical_compound_id: ChemicalCompound.where(name:'fatty-acids')},
+  {food_id: Food.where(name: 'Avocado'), chemical_compound_id: ChemicalCompound.where(name:'fatty-acids')},
+  {food_id: Food.where(name: 'Soy Sauce'), chemical_compound_id: ChemicalCompound.where(name:'sodium')}
 ]
 
 user_seeds = [
@@ -143,4 +143,10 @@ Food.delete_all
 disease_seeds.each { |cs| Disease.create(cs) }
 food_seeds.each { |is| Food.create(is) }
 nutrient_seeds.each { |cs| Nutrient.create(cs) }
+chemical_compound_seeds.each { |cs| ChemicalCompound.create(cs) }
+recommended_chemical_seeds.each { |cs| RecommendedChemical.create(cs) }
+chemical_compound_food_seeds.each { |cs| ChemicalCompoundFood.create(cs) }
 user_seeds.each { |cs| User.create(cs) }
+user_disease_seeds.each { |cs| UserDisease.create(cs) }
+recommended_range_seeds.each { |cs| RecommendedRange.create(cs) }
+

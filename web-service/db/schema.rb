@@ -11,23 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719025208) do
+ActiveRecord::Schema.define(version: 20150719053840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "chemical_compound_diseases", force: :cascade do |t|
-    t.integer "disease_id"
-    t.string  "chemical_compounds"
-  end
-
-  add_index "chemical_compound_diseases", ["disease_id"], name: "index_chemical_compound_diseases_on_disease_id", using: :btree
-
   create_table "chemical_compound_foods", force: :cascade do |t|
     t.integer "food_id"
-    t.string  "chemical_compounds"
+    t.integer "chemical_compound_id"
   end
 
+  add_index "chemical_compound_foods", ["chemical_compound_id"], name: "index_chemical_compound_foods_on_chemical_compound_id", using: :btree
   add_index "chemical_compound_foods", ["food_id"], name: "index_chemical_compound_foods_on_food_id", using: :btree
 
   create_table "chemical_compound_nutrients", force: :cascade do |t|
@@ -36,6 +30,15 @@ ActiveRecord::Schema.define(version: 20150719025208) do
   end
 
   add_index "chemical_compound_nutrients", ["nutrient_id"], name: "index_chemical_compound_nutrients_on_nutrient_id", using: :btree
+
+  create_table "chemical_compounds", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "nutrient_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "chemical_compounds", ["nutrient_id"], name: "index_chemical_compounds_on_nutrient_id", using: :btree
 
   create_table "diseases", force: :cascade do |t|
     t.string   "name"
@@ -69,6 +72,14 @@ ActiveRecord::Schema.define(version: 20150719025208) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "recommended_chemicals", force: :cascade do |t|
+    t.integer "disease_id"
+    t.integer "chemical_compound_id"
+  end
+
+  add_index "recommended_chemicals", ["chemical_compound_id"], name: "index_recommended_chemicals_on_chemical_compound_id", using: :btree
+  add_index "recommended_chemicals", ["disease_id"], name: "index_recommended_chemicals_on_disease_id", using: :btree
 
   create_table "recommended_ranges", force: :cascade do |t|
     t.datetime "created_at",  null: false
@@ -104,11 +115,14 @@ ActiveRecord::Schema.define(version: 20150719025208) do
     t.datetime "updated_at",    null: false
   end
 
-  add_foreign_key "chemical_compound_diseases", "diseases"
+  add_foreign_key "chemical_compound_foods", "chemical_compounds"
   add_foreign_key "chemical_compound_foods", "foods"
   add_foreign_key "chemical_compound_nutrients", "nutrients"
+  add_foreign_key "chemical_compounds", "nutrients"
   add_foreign_key "food_nutrients", "foods"
   add_foreign_key "food_nutrients", "nutrients"
+  add_foreign_key "recommended_chemicals", "chemical_compounds"
+  add_foreign_key "recommended_chemicals", "diseases"
   add_foreign_key "recommended_ranges", "diseases"
   add_foreign_key "recommended_ranges", "nutrients"
   add_foreign_key "user_diseases", "diseases"
