@@ -126,6 +126,13 @@ user_disease_seeds = [
   {user_id: User.where(user_name: 'minion_stuart'), disease_id: Disease.where(name: 'Cardiovascular Disease')}
 ]
 
+recommended_range_seeds = [
+    {disease_id: Disease.where(name: 'Hypertension'), nutrient_id: Nutrient.where(name: 'Sodium'), units: 'mg', recommended: '0', min: '1500', max: '1500'},
+    {disease_id: Disease.where(name: 'Diabetes'), nutrient_id: Nutrient.where(name: 'Sugar'), units: 'g', recommended: '0', min: '5', max:'5'},
+    {disease_id: Disease.where(name: 'Hypercholesterolemia'), nutrient_id: Nutrient.where(name: 'Cholesterol'), units: 'mg', recommended: '1', min: '0', max:'1'},
+    {disease_id: Disease.where(name: 'Hypercholesterolemia'), nutrient_id: Nutrient.where(name: 'Sugar'), units: 'mg', recommended: '1', min:'3', max: '8'}
+]
+
 # ActiveRecord::Base.connection.execute('TRUNCATE TABLE diseases, foods, nutrients, users RESTART IDENTITY')
 
 Disease.delete_all
