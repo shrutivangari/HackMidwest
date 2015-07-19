@@ -16,7 +16,8 @@ disease_seeds = [
   {name: 'Hypercholesterolemia', description:'High amounts of cholesterol in the blood.'},
   {name: 'Cancer', description:''},
   {name: 'Cardiovascular Disease', description:''},
-  {name: 'Cataract', description:''}
+  {name: 'Cataract', description:''},
+  {name: 'Anemia', description:''},
 ]
 
 food_seeds = [
@@ -45,7 +46,9 @@ food_seeds = [
   {name:'Tuna', description:'Seafood'},
   {name:'Walnuts', description:'nuts'},
   {name:'Almonds', description:'nuts'},
-  {name:'Avocado', description:'Fruit'}
+  {name:'Avocado', description:'Fruit'},
+  {name:'Cookies', description:'Junk'},
+  {name:'Chocolate', description:'Junk'}
 ]
 
 nutrient_seeds = [
@@ -83,10 +86,12 @@ nutrient_seeds = [
   {name:'Caffeine', description: 'lipid'}
 ]
 
-
-# ActiveRecord::Base.connection.execute('TRUNCATE TABLE diseases, foods, nutrients, users RESTART IDENTITY')
-
+ChemicalCompoundNutrient.delete_all
+RecommendedChemical.delete_all
+ChemicalCompoundFood.delete_all
 ChemicalCompound.delete_all
+UserDisease.delete_all
+RecommendedRange.delete_all
 Disease.delete_all
 Nutrient.delete_all
 User.delete_all
@@ -101,9 +106,11 @@ chemical_compound_seeds = [
     {name: 'beta-carotine'},
     {name: 'calciferol'},
     {name: 'fatty-acids'},
-    {name: 'sodium'}
+    {name: 'sodium'},
+    {name: 'oxalate'}
 ]
 
+ChemicalCompound.delete_all
 chemical_compound_seeds.each { |cs| ChemicalCompound.create(cs) }
 
 chemical_compound_nutrient_seeds = [
@@ -114,11 +121,12 @@ chemical_compound_nutrient_seeds = [
 ]
 
 recommended_chemical_seeds = [
-    {disease_id: Disease.where(name: 'Cancer').first.id, chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine').first.id},
-    {disease_id: Disease.where(name: 'Cardiovascular Disease').first.id, chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine').first.id},
-    {disease_id: Disease.where(name: 'Cataract').first.id, chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine').first.id},
-    {disease_id: Disease.where(name: 'Hypercholesterolemia').first.id, chemical_compound_id: ChemicalCompound.where(name: 'fatty-acids').first.id},
-    {disease_id: Disease.where(name: 'Hypotension').first.id, chemical_compound_id: ChemicalCompound.where(name: 'sodium').first.id}
+    {disease_id: Disease.where(name: 'Cancer').first.id, chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine').first.id, recommended: '1'},
+    {disease_id: Disease.where(name: 'Cardiovascular Disease').first.id, chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine').first.id, recommended: '1'},
+    {disease_id: Disease.where(name: 'Cataract').first.id, chemical_compound_id: ChemicalCompound.where(name: 'beta-carotine').first.id, recommended: '1'},
+    {disease_id: Disease.where(name: 'Hypercholesterolemia').first.id, chemical_compound_id: ChemicalCompound.where(name: 'fatty-acids').first.id, recommended: '1'},
+    {disease_id: Disease.where(name: 'Hypotension').first.id, chemical_compound_id: ChemicalCompound.where(name: 'sodium').first.id, recommended: '1'},
+    {disease_id: Disease.where(name: 'Kidney Stones').first.id, chemical_compound_id: ChemicalCompound.where(name: 'oxalate').first.id, recommended: '0'}
 ]
 
 chemical_compound_food_seeds = [
@@ -139,7 +147,9 @@ chemical_compound_food_seeds = [
     {food_id: Food.where(name: 'Walnuts').first.id, chemical_compound_id: ChemicalCompound.where(name:'fatty-acids').first.id},
     {food_id: Food.where(name: 'Almonds').first.id, chemical_compound_id: ChemicalCompound.where(name:'fatty-acids').first.id},
     {food_id: Food.where(name: 'Avocado').first.id, chemical_compound_id: ChemicalCompound.where(name:'fatty-acids').first.id},
-    {food_id: Food.where(name: 'Soy Sauce').first.id, chemical_compound_id: ChemicalCompound.where(name:'sodium').first.id}
+    {food_id: Food.where(name: 'Soy Sauce').first.id, chemical_compound_id: ChemicalCompound.where(name:'sodium').first.id},
+    {food_id: Food.where(name: 'Chocolate').first.id, chemical_compound_id: ChemicalCompound.where(name:'oxalate').first.id},
+    {food_id: Food.where(name: 'Spinach').first.id, chemical_compound_id: ChemicalCompound.where(name:'oxalate').first.id}
 ]
 
 user_seeds = [
@@ -157,10 +167,10 @@ recommended_range_seeds = [
     {disease_id: Disease.where(name: 'Hypertension').first.id, nutrient_id: Nutrient.where(name: 'Sodium, Na').first.id, units: 'mg', recommended: '0', min: '1500', max: '1500'},
     {disease_id: Disease.where(name: 'Diabetes').first.id, nutrient_id: Nutrient.where(name: 'Sugars, total').first.id, units: 'g', recommended: '0', min: '5', max:'5'},
     {disease_id: Disease.where(name: 'Hypercholesterolemia').first.id, nutrient_id: Nutrient.where(name: 'Cholesterol').first.id, units: 'mg', recommended: '1', min: '0', max:'1'},
-    {disease_id: Disease.where(name: 'Hypercholesterolemia').first.id, nutrient_id: Nutrient.where(name: 'Sugars, total').first.id, units: 'mg', recommended: '1', min:'3', max: '8'}
+    {disease_id: Disease.where(name: 'Hypercholesterolemia').first.id, nutrient_id: Nutrient.where(name: 'Sugars, total').first.id, units: 'mg', recommended: '1', min:'3', max: '8'},
+    {disease_id: Disease.where(name: 'Anemia').first.id, nutrient_id: Nutrient.where(name: 'Caffeine').first.id, units: 'mg', recommended: '0', min:'10', max: '20'},
+    {disease_id: Disease.where(name: 'Cataract').first.id, nutrient_id: Nutrient.where(name: 'Sugars, total').first.id, units: 'mg', recommended: '0', min:'10', max: '20'}
 ]
-
-
 
 chemical_compound_nutrient_seeds.each { |cs| ChemicalCompoundNutrient.create(cs) }
 recommended_chemical_seeds.each { |cs| RecommendedChemical.create(cs) }
