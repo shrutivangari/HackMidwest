@@ -84,7 +84,6 @@ chemical_compound_nutrient_seeds = [
   {nutrient_id: Nutrient.where(name: 'Vitamin D(D2 + D3)'), chemical_compound: 'beta-calciferol'},
   {nutrient_id: Nutrient.where(name: 'Vitamin D'), chemical_compound: 'calciferol'},
   {nutrient_id: Nutrient.where(name: 'Sodium'), chemical_compound: 'sodium'}
-
 ]
 
 chemical_compound_disease_seeds = [
@@ -97,23 +96,23 @@ chemical_compound_disease_seeds = [
 
 chemical_compound_food_seeds = [
   {food_id: Food.where(name:'Beef'), chemical_compound:'retinol'},
-  {name: Food.where(name:'Liver'), chemical_compound:'retinol'},
-  {name: Food.where(name: 'Eggs'), chemical_compound:'retinol'},
-  {name: Food.where(name: 'Shrimp'), chemical_compound:'retinol'},
-  {name: Food.where(name: 'Fish'), chemical_compound:'retinol'},
-  {name: Food.where(name: 'Fortified Milk'), chemical_compound:'retinol'},
-  {name: Food.where(name: 'Cheddar'), chemical_compound:'retinol'},
-  {name: Food.where(name: 'Cheese'), chemical_compound:'retinol'},
+  {food_id: Food.where(name:'Liver'), chemical_compound:'retinol'},
+  {food_id: Food.where(name: 'Eggs'), chemical_compound:'retinol'},
+  {food_id: Food.where(name: 'Shrimp'), chemical_compound:'retinol'},
+  {food_id: Food.where(name: 'Fish'), chemical_compound:'retinol'},
+  {food_id: Food.where(name: 'Fortified Milk'), chemical_compound:'retinol'},
+  {food_id: Food.where(name: 'Cheddar'), chemical_compound:'retinol'},
+  {food_id: Food.where(name: 'Cheese'), chemical_compound:'retinol'},
   {food_id: Food.where(name:' Sweet Potato'), chemical_compound:'beta-carotine'},
-  {name: Food.where(name:'Carrot'), chemical_compound:'beta-carotine'},
-  {name: Food.where(name: 'Pumpkin'), chemical_compound:'beta-carotine'},
-  {name: Food.where(name: 'Squash'), chemical_compound:'beta-carotine'},
-  {name: Food.where(name: 'Mango'), chemical_compound:'beta-carotine'},
-  {name: Food.where(name: 'Tuna'), chemical_compound:'fatty-acids'},
-  {name: Food.where(name: 'Walnuts'), chemical_compound:'fatty-acids'},
-  {name: Food.where(name: 'Almonds'), chemical_compound:'fatty-acids'},
-  {name: Food.where(name: 'Avocado'), chemical_compound:'fatty-acids'},
-  {name: Food.where(name: 'Soy Sauce'), chemical_compound:'sodium'}
+  {food_id: Food.where(name:'Carrot'), chemical_compound:'beta-carotine'},
+  {food_id: Food.where(name: 'Pumpkin'), chemical_compound:'beta-carotine'},
+  {food_id: Food.where(name: 'Squash'), chemical_compound:'beta-carotine'},
+  {food_id: Food.where(name: 'Mango'), chemical_compound:'beta-carotine'},
+  {food_id: Food.where(name: 'Tuna'), chemical_compound:'fatty-acids'},
+  {food_id: Food.where(name: 'Walnuts'), chemical_compound:'fatty-acids'},
+  {food_id: Food.where(name: 'Almonds'), chemical_compound:'fatty-acids'},
+  {food_id: Food.where(name: 'Avocado'), chemical_compound:'fatty-acids'},
+  {food_id: Food.where(name: 'Soy Sauce'), chemical_compound:'sodium'}
 ]
 
 user_seeds = [

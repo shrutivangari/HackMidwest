@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719013756) do
+ActiveRecord::Schema.define(version: 20150719021115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20150719013756) do
     t.integer  "nutrient_id"
     t.integer  "value"
     t.string   "units"
+    t.boolean  "recommended"
   end
 
   add_index "recommended_ranges", ["disease_id"], name: "index_recommended_ranges_on_disease_id", using: :btree
